@@ -17,7 +17,7 @@ namespace Animelist_v0._1
     {
         private List<string> directories = new List<string>();
 
-        private EpisodeList episodeList = new EpisodeList();
+        private EpisodeList episodeList;
 
         public AnimeOverviewer()
         {
@@ -27,6 +27,7 @@ namespace Animelist_v0._1
         private void Animelist_Load(object sender, EventArgs e)
         {
             InitializeDirectoryList();
+            episodeList = new EpisodeList(directories);
             InitializeEpisodeList();
         }
 
@@ -35,7 +36,7 @@ namespace Animelist_v0._1
             ObjectXMLSerializer<List<string>>.Save(directories, "directories.xml");
         }
 
-        private void addDirectoryButton_Click(object sender, EventArgs e)
+        private void btnAddDirectory_Click(object sender, EventArgs e)
         {
             // Show the Folder Browser dialog. If the user clicks OK, 
             // add the directory the user choses to the directory list.
@@ -55,7 +56,7 @@ namespace Animelist_v0._1
             }
         }
 
-        private void removeDirectoryButton_Click(object sender, EventArgs e)
+        private void btnRemoveDirectory_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem selected in directoryListView.SelectedItems)
             {
@@ -77,7 +78,7 @@ namespace Animelist_v0._1
             this.episodeListView.Columns.AddRange(new ColumnHeader[] { columnHeader0, columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             
             // Initialize the episodeList with files from directory paths and update the episode listview
-            episodeList.InitializeList(directories);
+            // episodeList.InitializeList(directories);
             UpdateEpisodeListView();
         }
 

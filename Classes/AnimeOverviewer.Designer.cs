@@ -33,8 +33,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.directoryListView = new System.Windows.Forms.ListView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.addDirectoryButton = new System.Windows.Forms.Button();
-            this.removeDirectoryButton = new System.Windows.Forms.Button();
+            this.btnAddDirectory = new System.Windows.Forms.Button();
+            this.btnRemoveDirectory = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -107,8 +107,8 @@
             // flowLayoutPanel1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel1, 2);
-            this.flowLayoutPanel1.Controls.Add(this.addDirectoryButton);
-            this.flowLayoutPanel1.Controls.Add(this.removeDirectoryButton);
+            this.flowLayoutPanel1.Controls.Add(this.btnAddDirectory);
+            this.flowLayoutPanel1.Controls.Add(this.btnRemoveDirectory);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 121);
@@ -116,27 +116,27 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(390, 35);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // addDirectoryButton
+            // btnAddDirectory
             // 
-            this.addDirectoryButton.AutoSize = true;
-            this.addDirectoryButton.Location = new System.Drawing.Point(306, 3);
-            this.addDirectoryButton.Name = "addDirectoryButton";
-            this.addDirectoryButton.Size = new System.Drawing.Size(81, 23);
-            this.addDirectoryButton.TabIndex = 0;
-            this.addDirectoryButton.Text = "Add Directory";
-            this.addDirectoryButton.UseVisualStyleBackColor = true;
-            this.addDirectoryButton.Click += new System.EventHandler(this.addDirectoryButton_Click);
+            this.btnAddDirectory.AutoSize = true;
+            this.btnAddDirectory.Location = new System.Drawing.Point(306, 3);
+            this.btnAddDirectory.Name = "btnAddDirectory";
+            this.btnAddDirectory.Size = new System.Drawing.Size(81, 23);
+            this.btnAddDirectory.TabIndex = 0;
+            this.btnAddDirectory.Text = "Add Directory";
+            this.btnAddDirectory.UseVisualStyleBackColor = true;
+            this.btnAddDirectory.Click += new System.EventHandler(this.btnAddDirectory_Click);
             // 
-            // removeDirectoryButton
+            // btnRemoveDirectory
             // 
-            this.removeDirectoryButton.AutoSize = true;
-            this.removeDirectoryButton.Location = new System.Drawing.Point(198, 3);
-            this.removeDirectoryButton.Name = "removeDirectoryButton";
-            this.removeDirectoryButton.Size = new System.Drawing.Size(102, 23);
-            this.removeDirectoryButton.TabIndex = 1;
-            this.removeDirectoryButton.Text = "Remove Directory";
-            this.removeDirectoryButton.UseVisualStyleBackColor = true;
-            this.removeDirectoryButton.Click += new System.EventHandler(this.removeDirectoryButton_Click);
+            this.btnRemoveDirectory.AutoSize = true;
+            this.btnRemoveDirectory.Location = new System.Drawing.Point(198, 3);
+            this.btnRemoveDirectory.Name = "btnRemoveDirectory";
+            this.btnRemoveDirectory.Size = new System.Drawing.Size(102, 23);
+            this.btnRemoveDirectory.TabIndex = 1;
+            this.btnRemoveDirectory.Text = "Remove Directory";
+            this.btnRemoveDirectory.UseVisualStyleBackColor = true;
+            this.btnRemoveDirectory.Click += new System.EventHandler(this.btnRemoveDirectory_Click);
             // 
             // AnimeOverviewer
             // 
@@ -167,8 +167,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListView directoryListView;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button addDirectoryButton;
-        private System.Windows.Forms.Button removeDirectoryButton;
+        private System.Windows.Forms.Button btnAddDirectory;
+        private System.Windows.Forms.Button btnRemoveDirectory;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

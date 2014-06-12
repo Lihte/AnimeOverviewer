@@ -72,10 +72,12 @@ namespace Animelist_v0._1
         // For IsReadOnly
         private bool isRO = false;
 
-        public EpisodeList()
+        public EpisodeList(List<string> dir)
         {
             innerCol = new List<Episode>();
             buffer = new List<string>();
+
+            InitializeList(dir);
         }
 
         // Adds an index to the collection.
