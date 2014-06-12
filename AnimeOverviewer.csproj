@@ -46,18 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Episode.cs" />
-    <Compile Include="AnimeOverviewer.cs">
+    <Compile Include="Classes\Episode.cs" />
+    <Compile Include="Classes\AnimeOverviewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AnimeOverviewer.Designer.cs">
+    <Compile Include="Classes\AnimeOverviewer.Designer.cs">
       <DependentUpon>AnimeOverviewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="EpisodeList.cs" />
-    <Compile Include="ObjectXMLSerializer.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\EpisodeList.cs" />
+    <Compile Include="Classes\ObjectXMLSerializer.cs" />
+    <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AnimeOverviewer.resx">
+    <EmbeddedResource Include="Classes\AnimeOverviewer.resx">
       <DependentUpon>AnimeOverviewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
