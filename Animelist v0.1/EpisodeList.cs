@@ -67,7 +67,7 @@ namespace Animelist_v0._1
         private List<string> buffer;
 
         // XML List of anime 
-        XDocument doc = XDocument.Load("anime-list.xml");
+        XDocument doc = XDocument.Load(@"C:\Users\Master\Documents\GitHub\anime-lists\anime-list.xml");
 
         // For IsReadOnly
         private bool isRO = false;
