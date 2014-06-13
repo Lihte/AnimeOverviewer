@@ -15,8 +15,7 @@ namespace Animelist_v0._1
 {
     public partial class AnimeOverviewer : Form
     {
-        private List<string> directories = new List<string>();
-
+        private List<string> directories;
         private EpisodeList episodeList;
 
         public AnimeOverviewer()
@@ -26,13 +25,16 @@ namespace Animelist_v0._1
 
         private void Animelist_Load(object sender, EventArgs e)
         {
+            directories = new List<string>();
             InitializeDirectoryList();
+
             episodeList = new EpisodeList(directories);
-            InitializeEpisodeList();
+            InitializeEpisodeListView();
         }
 
         private void Animelist_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Rebuild directories.xml when closing program
             ObjectXMLSerializer<List<string>>.Save(directories, "directories.xml");
         }
 
@@ -65,7 +67,7 @@ namespace Animelist_v0._1
             }
         }
 
-        private void InitializeEpisodeList()
+        private void InitializeEpisodeListView()
         {
             // Create and initialize column headers for episodeListView
             ColumnHeader columnHeader0 = new ColumnHeader() { Text = "No.", Width = 30 };
@@ -77,8 +79,7 @@ namespace Animelist_v0._1
             // Add the column headers to episodeListView
             this.episodeListView.Columns.AddRange(new ColumnHeader[] { columnHeader0, columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             
-            // Initialize the episodeList with files from directory paths and update the episode listview
-            // episodeList.InitializeList(directories);
+            // Update the episode listview
             UpdateEpisodeListView();
         }
 
@@ -103,18 +104,23 @@ namespace Animelist_v0._1
             this.directoryListView.Columns.Add("Directories");
             this.directoryListView.Columns[0].Width = directoryListView.Width - 4;
 
-            // Load directory list from XML
+            // Load directory list from directories.xml
             if (File.Exists("directories.xml"))
                 directories = ObjectXMLSerializer<List<string>>.Load("directories.xml");
 
             // Load directoryListView with Items from directory list
-            if (directories.Count != 0)
+            if (directories.Count > 0)
             {
                 foreach (var dir in directories)
                 {
                     directoryListView.Items.Add(new ListViewItem(dir));
                 }
             }
+        }
+
+        private void directoryListView_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+
         } 
     }
 }

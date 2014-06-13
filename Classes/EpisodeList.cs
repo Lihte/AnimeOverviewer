@@ -87,7 +87,8 @@ namespace Animelist_v0._1
             set { innerCol[index] = value; }
         }
 
-        // Interface methods
+        #region ICollection Methods
+
         public void Add(Episode item)
         {
             innerCol.Add(item);
@@ -154,14 +155,9 @@ namespace Animelist_v0._1
             return result;
         }
 
+        #endregion
+
         // Public methods
-        public void Add(string filename, string filepath)
-        {
-            Episode newEpisode = ProcessEpisode(filename, filepath);
-            if(newEpisode.Title != "")
-                Add(newEpisode);
-        }
-        
         public void InitializeList(List<string> dir)
         {
             try
@@ -185,6 +181,12 @@ namespace Animelist_v0._1
         }
 
         // Private methods
+        private void Add(string filename, string filepath)
+        {
+            Episode newEpisode = ProcessEpisode(filename, filepath);
+            if (newEpisode.Title != "")
+                Add(newEpisode);
+        }
 
         // This method doesn't work and needs some serious design contemplation
         private Episode ProcessEpisode(string filename, string filepath)

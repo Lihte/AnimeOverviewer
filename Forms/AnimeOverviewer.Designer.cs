@@ -93,6 +93,7 @@
             // 
             // directoryListView
             // 
+            this.directoryListView.CheckBoxes = true;
             this.tableLayoutPanel1.SetColumnSpan(this.directoryListView, 2);
             this.directoryListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.directoryListView.FullRowSelect = true;
@@ -103,6 +104,7 @@
             this.directoryListView.TabIndex = 0;
             this.directoryListView.UseCompatibleStateImageBehavior = false;
             this.directoryListView.View = System.Windows.Forms.View.Details;
+            this.directoryListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.directoryListView_ItemChecked);
             // 
             // flowLayoutPanel1
             // 
