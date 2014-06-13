@@ -31,11 +31,11 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.episodeListView = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.directoryListView = new System.Windows.Forms.ListView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddDirectory = new System.Windows.Forms.Button();
             this.btnRemoveDirectory = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.directoryListView = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,21 +91,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(396, 551);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // directoryListView
-            // 
-            this.directoryListView.CheckBoxes = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.directoryListView, 2);
-            this.directoryListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.directoryListView.FullRowSelect = true;
-            this.directoryListView.Location = new System.Drawing.Point(0, 0);
-            this.directoryListView.Margin = new System.Windows.Forms.Padding(0);
-            this.directoryListView.Name = "directoryListView";
-            this.directoryListView.Size = new System.Drawing.Size(396, 118);
-            this.directoryListView.TabIndex = 0;
-            this.directoryListView.UseCompatibleStateImageBehavior = false;
-            this.directoryListView.View = System.Windows.Forms.View.Details;
-            this.directoryListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.directoryListView_ItemChecked);
-            // 
             // flowLayoutPanel1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel1, 2);
@@ -140,6 +125,21 @@
             this.btnRemoveDirectory.UseVisualStyleBackColor = true;
             this.btnRemoveDirectory.Click += new System.EventHandler(this.btnRemoveDirectory_Click);
             // 
+            // directoryListView
+            // 
+            this.directoryListView.CheckBoxes = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.directoryListView, 2);
+            this.directoryListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.directoryListView.FullRowSelect = true;
+            this.directoryListView.Location = new System.Drawing.Point(0, 0);
+            this.directoryListView.Margin = new System.Windows.Forms.Padding(0);
+            this.directoryListView.Name = "directoryListView";
+            this.directoryListView.Size = new System.Drawing.Size(396, 118);
+            this.directoryListView.TabIndex = 0;
+            this.directoryListView.UseCompatibleStateImageBehavior = false;
+            this.directoryListView.View = System.Windows.Forms.View.Details;
+            this.directoryListView.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.directoryListView_ItemCheck);
+            // 
             // AnimeOverviewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,8 +149,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AnimeOverviewer";
             this.Text = "Animelist";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Animelist_FormClosing);
-            this.Load += new System.EventHandler(this.Animelist_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnimeOverviewer_FormClosing);
+            this.Load += new System.EventHandler(this.AnimeOverviewer_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

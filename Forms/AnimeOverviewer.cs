@@ -23,7 +23,7 @@ namespace Animelist_v0._1
             InitializeComponent();
         }
 
-        private void Animelist_Load(object sender, EventArgs e)
+        private void AnimeOverviewer_Load(object sender, EventArgs e)
         {
             directories = new List<string>();
             InitializeDirectoryList();
@@ -32,7 +32,7 @@ namespace Animelist_v0._1
             InitializeEpisodeListView();
         }
 
-        private void Animelist_FormClosing(object sender, FormClosingEventArgs e)
+        private void AnimeOverviewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Rebuild directories.xml when closing program
             ObjectXMLSerializer<List<string>>.Save(directories, "directories.xml");
@@ -104,23 +104,37 @@ namespace Animelist_v0._1
             this.directoryListView.Columns.Add("Directories");
             this.directoryListView.Columns[0].Width = directoryListView.Width - 4;
 
-            // Load directory list from directories.xml
+            // Load the directory list from directories.xml if it exists and isn't empty
+            // If it doesn't exist, one will be created at the end of the program
             if (File.Exists("directories.xml"))
+            {
                 directories = ObjectXMLSerializer<List<string>>.Load("directories.xml");
 
-            // Load directoryListView with Items from directory list
-            if (directories.Count > 0)
-            {
-                foreach (var dir in directories)
+                // Load directoryListView with Items from the directory list
+                if (directories.Count > 0)
                 {
-                    directoryListView.Items.Add(new ListViewItem(dir));
+                    foreach (var dir in directories)
+                    {
+                        directoryListView.Items.Add(new ListViewItem(dir));
+                    }
                 }
             }
+
+            /*if (directoryListView.Items.Count > 0)
+            {
+                foreach (ListViewItem item in this.directoryListView.Items)
+                {
+                    if(item.Checked == true)
+                    {
+                        directoryListView.ItemChecked += directoryListView_ItemChecked;
+                    }
+                }
+            }*/
         }
 
-        private void directoryListView_ItemChecked(object sender, ItemCheckedEventArgs e)
+        private void directoryListView_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-
-        } 
+            MessageBox.Show("Item Checked!");
+        }
     }
 }
