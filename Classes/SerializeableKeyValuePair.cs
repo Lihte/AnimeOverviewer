@@ -16,9 +16,9 @@ namespace Animelist_v0._1
         public V Value
         { get; set; }
 
-        private SerializableKeyValuePair() { }
+        protected SerializableKeyValuePair() { }
 
-        public SerializableKeyValuePair(K key, V value)
+        protected SerializableKeyValuePair(K key, V value)
         {
             this.Key = key;
             this.Value = value;

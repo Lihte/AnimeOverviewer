@@ -72,7 +72,7 @@ namespace Animelist_v0._1
         // For IsReadOnly
         private bool isRO = false;
 
-        public EpisodeList(List<SerializableKeyValuePair<string, bool>> dir)
+        public EpisodeList(List<SerializeableDirectory> dir)
         {
             innerCol = new List<Episode>();
             buffer = new List<string>();
@@ -158,7 +158,7 @@ namespace Animelist_v0._1
         #endregion
 
         // Public methods
-        public void InitializeList(List<SerializableKeyValuePair<string, bool>> dir)
+        public void InitializeList(List<SerializeableDirectory> dir)
         {
             try
             {
@@ -167,7 +167,9 @@ namespace Animelist_v0._1
                     foreach (string file in Directory.GetFiles(entry.Key))
                     {
                         if (!buffer.Contains(file))
+                        {
                             Add(Path.GetFileNameWithoutExtension(file), Path.GetFullPath(file));
+                        }
 
                         // Make sure no duplicate values gets added by using a buffer list to store filenames.
                         buffer.Add(file);

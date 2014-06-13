@@ -138,7 +138,7 @@
             this.listViewDirectory.TabIndex = 0;
             this.listViewDirectory.UseCompatibleStateImageBehavior = false;
             this.listViewDirectory.View = System.Windows.Forms.View.Details;
-            this.listViewDirectory.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.directoryListView_ItemCheck);
+            this.listViewDirectory.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listViewDirectory_ItemCheck);
             // 
             // AnimeOverviewer
             // 

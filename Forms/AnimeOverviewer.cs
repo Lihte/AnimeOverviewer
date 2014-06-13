@@ -15,8 +15,11 @@ namespace Animelist_v0._1
 {
     public partial class AnimeOverviewer : Form
     {
-        private List<SerializableKeyValuePair<string, bool>> directories;
+        private List<SerializeableDirectory> directories;
         private EpisodeList episodeList;
+
+        // Used to make sure Item Check status isn't changed when form loads
+        private bool formIsLoaded = false;
 
         public AnimeOverviewer()
         {
@@ -27,17 +30,19 @@ namespace Animelist_v0._1
         
         private void AnimeOverviewer_Load(object sender, EventArgs e)
         {
-            directories = new List<SerializableKeyValuePair<string, bool>>();
+            directories = new List<SerializeableDirectory>();
             InitializeDirectoryList();
 
             episodeList = new EpisodeList(directories);
             InitializeEpisodeListView();
+
+            formIsLoaded = true;
         }
 
         private void AnimeOverviewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Rebuild directories.xml when closing program
-            ObjectXMLSerializer <List<SerializableKeyValuePair<string, bool>>>.Save(directories, "directories.xml");
+            ObjectXMLSerializer <List<SerializeableDirectory>>.Save(directories, "directories.xml");
         }
 
         private void btnAddDirectory_Click(object sender, EventArgs e)
@@ -50,7 +55,7 @@ namespace Animelist_v0._1
                 if (directories.Any(d => d.Key == folderBrowserDialog1.SelectedPath) == false)
                 {
                     listViewDirectory.Items.Add(new ListViewItem(folderBrowserDialog1.SelectedPath));
-                    directories.Add(new SerializableKeyValuePair<string, bool>(folderBrowserDialog1.SelectedPath, false));
+                    directories.Add(new SerializeableDirectory(folderBrowserDialog1.SelectedPath, false));
                     episodeList.InitializeList(directories);
                     UpdateEpisodeListView();
                 }
@@ -62,31 +67,53 @@ namespace Animelist_v0._1
         }
 
         private void btnRemoveDirectory_Click(object sender, EventArgs e)
-        {
+        {          
             foreach (ListViewItem selected in listViewDirectory.SelectedItems)
             {
+                foreach (ListViewItem item in listViewEpisode.Items)
+                {
+                    if (item.SubItems[4].Text.Contains(selected.Text))
+                    {
+                        listViewEpisode.Items.Remove(item);
+                    }
+                }
+                
+                foreach (Episode episode in episodeList)
+                {
+                    if (episode.Filepath.Contains(selected.Text))
+                    {
+                        episodeList.Remove(episode);
+                    }
+                }
+
                 directories.RemoveAll(d => d.Key == selected.Text);
                 listViewDirectory.Items.Remove(selected);
             }
         }
 
-        private void directoryListView_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void listViewDirectory_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            ListView list = (ListView)sender;
-            ListViewItem item = list.Items[e.Index];
+            ListViewItem item = listViewDirectory.Items[e.Index];
 
-            for (int i = 0; i < directories.Count; i++)
+            if (formIsLoaded)
             {
-                if (directories[i].Key == item.Text)
+                for (int i = 0; i < directories.Count; i++)
                 {
-                    if (directories[i].Value == true)
-                        directories[i].Value = false;
-                    else
-                        directories[i].Value = true;
-                }
+                    if (directories[i].Key == item.Text)
+                    {
+                        if (directories[i].Value == true)
+                        {
+                            directories[i].Value = false;
+                            MessageBox.Show("Item Unchecked!");
+                        }
+                        else
+                        {
+                            directories[i].Value = true;
+                            MessageBox.Show("Item Checked!");
+                        }
+                    }
+                } 
             }
-
-            MessageBox.Show("Item Checked!");
         }
         
         #endregion
@@ -132,14 +159,14 @@ namespace Animelist_v0._1
             // If it doesn't exist, one will be created at the end of the program
             if (File.Exists("directories.xml"))
             {
-                directories = ObjectXMLSerializer<List<SerializableKeyValuePair<string, bool>>>.Load("directories.xml");
+                directories = ObjectXMLSerializer<List<SerializeableDirectory>>.Load("directories.xml");
 
                 // Load directoryListView with Items from the directory list
                 if (directories.Count > 0)
                 {
                     foreach (var dir in directories)
                     {
-                        listViewDirectory.Items.Add(new ListViewItem(dir.Key));
+                        listViewDirectory.Items.Add(new ListViewItem(dir.Key) { Checked = dir.Value });
                     }
                 }
             }
