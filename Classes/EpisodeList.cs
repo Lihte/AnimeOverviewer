@@ -72,7 +72,7 @@ namespace Animelist_v0._1
         // For IsReadOnly
         private bool isRO = false;
 
-        public EpisodeList(List<string> dir)
+        public EpisodeList(List<SerializableKeyValuePair<string, bool>> dir)
         {
             innerCol = new List<Episode>();
             buffer = new List<string>();
@@ -158,11 +158,11 @@ namespace Animelist_v0._1
         #endregion
 
         // Public methods
-        /*public void InitializeList(Dictionary<string, bool> dir)
+        public void InitializeList(List<SerializableKeyValuePair<string, bool>> dir)
         {
             try
             {
-                foreach(KeyValuePair<string,bool> entry in dir)
+                foreach(var entry in dir)
                 {
                     foreach (string file in Directory.GetFiles(entry.Key))
                     {
@@ -178,9 +178,9 @@ namespace Animelist_v0._1
             {
                 Exception ep = ex.InnerException;
             }
-        }*/
+        }
 
-        public void InitializeList(List<string> dir)
+        /*public void InitializeList(List<string> dir)
         {
             try
             {
@@ -200,7 +200,7 @@ namespace Animelist_v0._1
             {
                 Exception ep = ex.InnerException;
             }
-        }
+        }*/
 
         // Private methods
         private void Add(string filename, string filepath)
