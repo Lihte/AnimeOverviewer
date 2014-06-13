@@ -158,6 +158,28 @@ namespace Animelist_v0._1
         #endregion
 
         // Public methods
+        /*public void InitializeList(Dictionary<string, bool> dir)
+        {
+            try
+            {
+                foreach(KeyValuePair<string,bool> entry in dir)
+                {
+                    foreach (string file in Directory.GetFiles(entry.Key))
+                    {
+                        if (!buffer.Contains(file))
+                            Add(Path.GetFileNameWithoutExtension(file), Path.GetFullPath(file));
+
+                        // Make sure no duplicate values gets added by using a buffer list to store filenames.
+                        buffer.Add(file);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Exception ep = ex.InnerException;
+            }
+        }*/
+
         public void InitializeList(List<string> dir)
         {
             try

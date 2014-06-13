@@ -7,7 +7,7 @@ namespace Animelist_v0._1
 {
     public class Episode : IEquatable<Episode>
     {
-        public string Filename {get; set;}
+        public string Filename { get; set; }
         public string Filepath { get; set; }
         public string Title { get; set; }
         public string Subgroup { get; set; }

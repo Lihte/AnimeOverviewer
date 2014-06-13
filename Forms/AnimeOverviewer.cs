@@ -24,7 +24,7 @@ namespace Animelist_v0._1
         }
 
         private void AnimeOverviewer_Load(object sender, EventArgs e)
-        {
+        {        
             directories = new List<string>();
             InitializeDirectoryList();
 
@@ -46,7 +46,7 @@ namespace Animelist_v0._1
             {
                 if (!directories.Contains(folderBrowserDialog1.SelectedPath))
                 {
-                    directoryListView.Items.Add(new ListViewItem(folderBrowserDialog1.SelectedPath));
+                    listViewDirectory.Items.Add(new ListViewItem(folderBrowserDialog1.SelectedPath));
                     directories.Add(folderBrowserDialog1.SelectedPath);
                     episodeList.InitializeList(directories);
                     UpdateEpisodeListView();
@@ -60,10 +60,10 @@ namespace Animelist_v0._1
 
         private void btnRemoveDirectory_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem selected in directoryListView.SelectedItems)
+            foreach (ListViewItem selected in listViewDirectory.SelectedItems)
             {
                 directories.Remove(selected.Text);
-                directoryListView.Items.Remove(selected);
+                listViewDirectory.Items.Remove(selected);
             }
         }
 
@@ -77,7 +77,7 @@ namespace Animelist_v0._1
             ColumnHeader columnHeader4 = new ColumnHeader() { Text = "Path", Width = -2 };
 
             // Add the column headers to episodeListView
-            this.episodeListView.Columns.AddRange(new ColumnHeader[] { columnHeader0, columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            this.listViewEpisode.Columns.AddRange(new ColumnHeader[] { columnHeader0, columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             
             // Update the episode listview
             UpdateEpisodeListView();
@@ -87,22 +87,22 @@ namespace Animelist_v0._1
         {
             foreach (var ep in episodeList)
             {
-                if (episodeListView.Items.Count > 0)
+                if (listViewEpisode.Items.Count > 0)
                 {
-                    ListViewItem checkForDuplicates = episodeListView.FindItemWithText(ep.Filepath, true, 0);
+                    ListViewItem checkForDuplicates = listViewEpisode.FindItemWithText(ep.Filepath, true, 0);
                     if (checkForDuplicates == null)
-                        episodeListView.Items.Add(new ListViewItem(new string[] { ep.Number.ToString(), ep.Title, ep.Subgroup, ep.Resolution, ep.Filepath }));
+                        listViewEpisode.Items.Add(new ListViewItem(new string[] { ep.Number.ToString(), ep.Title, ep.Subgroup, ep.Resolution, ep.Filepath }));
                 }
                 else
-                    episodeListView.Items.Add(new ListViewItem(new string[] { ep.Number.ToString(), ep.Title, ep.Subgroup, ep.Resolution, ep.Filepath }));
+                    listViewEpisode.Items.Add(new ListViewItem(new string[] { ep.Number.ToString(), ep.Title, ep.Subgroup, ep.Resolution, ep.Filepath }));
             }
         }
 
         private void InitializeDirectoryList()
         {
             // Add a column header to directoryListView
-            this.directoryListView.Columns.Add("Directories");
-            this.directoryListView.Columns[0].Width = directoryListView.Width - 4;
+            this.listViewDirectory.Columns.Add("Directories");
+            this.listViewDirectory.Columns[0].Width = listViewDirectory.Width - 4;
 
             // Load the directory list from directories.xml if it exists and isn't empty
             // If it doesn't exist, one will be created at the end of the program
@@ -115,7 +115,7 @@ namespace Animelist_v0._1
                 {
                     foreach (var dir in directories)
                     {
-                        directoryListView.Items.Add(new ListViewItem(dir));
+                        listViewDirectory.Items.Add(new ListViewItem(dir));
                     }
                 }
             }

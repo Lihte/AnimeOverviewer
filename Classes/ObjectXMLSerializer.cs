@@ -68,7 +68,6 @@ namespace Animelist_v0._1
         private static XmlSerializer CreateXmlSerializer()
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-
             return xmlSerializer;
         }
 

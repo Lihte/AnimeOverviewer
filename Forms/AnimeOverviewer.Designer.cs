@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.episodeListView = new System.Windows.Forms.ListView();
+            this.listViewEpisode = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddDirectory = new System.Windows.Forms.Button();
             this.btnRemoveDirectory = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.directoryListView = new System.Windows.Forms.ListView();
+            this.listViewDirectory = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -52,7 +52,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.episodeListView);
+            this.splitContainer1.Panel1.Controls.Add(this.listViewEpisode);
             this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
             // 
             // splitContainer1.Panel2
@@ -63,23 +63,23 @@
             this.splitContainer1.SplitterDistance = 411;
             this.splitContainer1.TabIndex = 0;
             // 
-            // episodeListView
+            // listViewEpisode
             // 
-            this.episodeListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.episodeListView.FullRowSelect = true;
-            this.episodeListView.Location = new System.Drawing.Point(10, 10);
-            this.episodeListView.Name = "episodeListView";
-            this.episodeListView.Size = new System.Drawing.Size(401, 551);
-            this.episodeListView.TabIndex = 0;
-            this.episodeListView.UseCompatibleStateImageBehavior = false;
-            this.episodeListView.View = System.Windows.Forms.View.Details;
+            this.listViewEpisode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewEpisode.FullRowSelect = true;
+            this.listViewEpisode.Location = new System.Drawing.Point(10, 10);
+            this.listViewEpisode.Name = "listViewEpisode";
+            this.listViewEpisode.Size = new System.Drawing.Size(401, 551);
+            this.listViewEpisode.TabIndex = 0;
+            this.listViewEpisode.UseCompatibleStateImageBehavior = false;
+            this.listViewEpisode.View = System.Windows.Forms.View.Details;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.directoryListView, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.listViewDirectory, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
@@ -125,20 +125,20 @@
             this.btnRemoveDirectory.UseVisualStyleBackColor = true;
             this.btnRemoveDirectory.Click += new System.EventHandler(this.btnRemoveDirectory_Click);
             // 
-            // directoryListView
+            // listViewDirectory
             // 
-            this.directoryListView.CheckBoxes = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.directoryListView, 2);
-            this.directoryListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.directoryListView.FullRowSelect = true;
-            this.directoryListView.Location = new System.Drawing.Point(0, 0);
-            this.directoryListView.Margin = new System.Windows.Forms.Padding(0);
-            this.directoryListView.Name = "directoryListView";
-            this.directoryListView.Size = new System.Drawing.Size(396, 118);
-            this.directoryListView.TabIndex = 0;
-            this.directoryListView.UseCompatibleStateImageBehavior = false;
-            this.directoryListView.View = System.Windows.Forms.View.Details;
-            this.directoryListView.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.directoryListView_ItemCheck);
+            this.listViewDirectory.CheckBoxes = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.listViewDirectory, 2);
+            this.listViewDirectory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewDirectory.FullRowSelect = true;
+            this.listViewDirectory.Location = new System.Drawing.Point(0, 0);
+            this.listViewDirectory.Margin = new System.Windows.Forms.Padding(0);
+            this.listViewDirectory.Name = "listViewDirectory";
+            this.listViewDirectory.Size = new System.Drawing.Size(396, 118);
+            this.listViewDirectory.TabIndex = 0;
+            this.listViewDirectory.UseCompatibleStateImageBehavior = false;
+            this.listViewDirectory.View = System.Windows.Forms.View.Details;
+            this.listViewDirectory.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.directoryListView_ItemCheck);
             // 
             // AnimeOverviewer
             // 
@@ -165,9 +165,9 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListView episodeListView;
+        private System.Windows.Forms.ListView listViewEpisode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ListView directoryListView;
+        private System.Windows.Forms.ListView listViewDirectory;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnAddDirectory;
         private System.Windows.Forms.Button btnRemoveDirectory;

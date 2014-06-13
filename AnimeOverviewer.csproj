@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Episode.cs" />
+    <Compile Include="Classes\KeyValuePair.cs" />
     <Compile Include="Forms\AnimeOverviewer.cs">
       <SubType>Form</SubType>
     </Compile>
